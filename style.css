@@ -75,3 +75,8 @@ body {
 
 	color: var(--dark-mode-elements);
 }
+
+.section--filters {
+	display: flex;
+	justify-content: space-between;
+}

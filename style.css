@@ -80,3 +80,18 @@ body {
 	display: flex;
 	justify-content: space-between;
 }
+
+.section-countries {
+	display: flex;
+	flex-flow: wrap row;
+}
+
+.country-box {
+	width: 320px;
+	height: 300px;
+}
+
+.country-box__flag {
+	width: 320px;
+	height: 196px;
+}

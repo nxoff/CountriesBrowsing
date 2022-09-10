@@ -17,6 +17,8 @@ body {
 
 	font-family: "Nunito Sans", sans-serif;
 	background-color: var(--light-mode-background);
+
+	overflow-x: hidden;
 }
 
 .section {
@@ -87,6 +89,7 @@ body {
 	justify-content: center;
 
 	column-gap: 10px;
+	row-gap: 100px;
 
 	margin-top: 100px;
 }
@@ -101,4 +104,15 @@ body {
 	height: 165px;
 
 	border-radius: 10px;
+}
+
+.country-box__name {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.country-box__information {
+	display: flex;
+	font-weight: 300;
+	font-size: 16px;
 }

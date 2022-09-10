@@ -81,9 +81,14 @@ body {
 	justify-content: space-between;
 }
 
-.section-countries {
+.section--countries {
 	display: flex;
 	flex-flow: wrap row;
+	justify-content: center;
+
+	column-gap: 10px;
+
+	margin-top: 100px;
 }
 
 .country-box {
@@ -92,6 +97,8 @@ body {
 }
 
 .country-box__flag {
-	width: 320px;
-	height: 196px;
+	width: 280px;
+	height: 165px;
+
+	border-radius: 10px;
 }

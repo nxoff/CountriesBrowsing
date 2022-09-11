@@ -1,4 +1,4 @@
-import { Country } from "./country.js";
+import { shuffle } from "./shuffle.js";
 
 const SECTION_COUNTRIES = document.querySelector(".section--countries");
 const currentCountries = [];
@@ -16,43 +16,43 @@ getCountriesApi()
 		console.log(err);
 	});
 
-function createCountryProperties(data) {
-	let newCountry = new Country(
-		data[0].name.common,
-		data[0].population,
-		data[0].region,
-		data[0].capital
-	);
-
-	currentCountries.push(newCountry);
-}
-
 function createCountryObject(data, index) {
 	const countryBox = document.createElement("div");
 	const countryFlag = document.createElement("img");
+	const countryName = document.createElement("h2");
+	const countryPopulation = document.createElement("span");
+	const countryRegion = document.createElement("span");
+	const countryCapital = document.createElement("span");
+	countryBox.classList.add("country-box");
+	countryFlag.classList.add("country-box__flag");
+	countryName.classList.add("country-box__name");
+	countryPopulation.classList.add("country-box__information");
+	countryRegion.classList.add("country-box__information");
+	countryCapital.classList.add("country-box__information");
 
 	countryFlag.src = data[index].flags.png;
-	countryFlag.classList.add("country-box__flag");
+	countryName.textContent = data[index].name.common;
+	countryPopulation.textContent = "Population: " + data[index].population;
+	countryRegion.textContent = "Region: " + data[index].region;
+	countryCapital.textContent = "Capital: " + data[index].capital;
 	countryBox.appendChild(countryFlag);
-	countryBox.classList.add("country-box");
+	countryBox.appendChild(countryName);
+	countryBox.appendChild(countryPopulation);
+	countryBox.appendChild(countryRegion);
+	countryBox.appendChild(countryCapital);
 
 	SECTION_COUNTRIES.appendChild(countryBox);
 }
 
 function randomlyPickCountries(data) {
 	const randomNumbers = [];
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 100; i++) {
 		randomNumbers.push(i);
 	}
-	console.log(randomNumbers);
 
-	const desiredNumbers = [];
-	for (let i = 0; i < 5; i++) {
-		let rand = Math.floor(Math.random() * randomNumbers.length);
-		randomNumbers.splice(rand, 1);
-		console.log(rand);
-		console.log(randomNumbers);
-		createCountryObject(data, rand);
-		rand = 0;
+	let random = shuffle(randomNumbers);
+
+	for (let i = 0; i < 12; i++) {
+		createCountryObject(data, random[i]);
 	}
 }

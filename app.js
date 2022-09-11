@@ -1,7 +1,7 @@
+import { Country } from "./country.js";
+
 const SECTION_COUNTRIES = document.querySelector(".section--countries");
-const POPULATION_TEXT = "Population: ";
-const REGION_TEXT = "Region: ";
-const CAPITAL_TEXT = "Capital: ";
+const currentCountries = [];
 
 async function getCountriesApi() {
 	const response = await fetch("https://restcountries.com/v3.1/all");
@@ -10,57 +10,49 @@ async function getCountriesApi() {
 
 getCountriesApi()
 	.then((data) => {
-		console.log(data);
-		createArrayWithNumbers(data, 100);
+		randomlyPickCountries(data);
 	})
 	.catch((err) => {
 		console.log(err);
 	});
 
-function createNewCountryObject(data, path) {
+function createCountryProperties(data) {
+	let newCountry = new Country(
+		data[0].name.common,
+		data[0].population,
+		data[0].region,
+		data[0].capital
+	);
+
+	currentCountries.push(newCountry);
+}
+
+function createCountryObject(data, index) {
 	const countryBox = document.createElement("div");
-
 	const countryFlag = document.createElement("img");
-	const countryName = document.createElement("h2");
-	const countryPopulation = document.createElement("span");
-	const countryRegion = document.createElement("span");
-	const countryCapital = document.createElement("span");
 
-	countryBox.classList.add("country-box");
+	countryFlag.src = data[index].flags.png;
 	countryFlag.classList.add("country-box__flag");
-	countryName.classList.add("country-box__name");
-	countryPopulation.classList.add("country-box__information");
-	countryRegion.classList.add("country-box__information");
-	countryCapital.classList.add("country-box__information");
-	countryFlag.src = path;
-	countryName.textContent = data.name.common;
-	countryPopulation.textContent = `${POPULATION_TEXT}${data.population}`;
-	countryRegion.textContent = `${REGION_TEXT}${data.region}`;
-	countryCapital.textContent = `${CAPITAL_TEXT}${data.capital}`;
+	countryBox.appendChild(countryFlag);
+	countryBox.classList.add("country-box");
 
-	countryBox.append(countryFlag);
-	countryBox.append(countryName);
-	countryBox.append(countryPopulation);
-	countryBox.append(countryRegion);
-	countryBox.append(countryCapital);
 	SECTION_COUNTRIES.appendChild(countryBox);
 }
 
-function createArrayWithNumbers(data, max) {
-	var max = 100;
-	var random = [];
-	for (var i = 1; i < max; i++) {
-		var temp = Math.floor(Math.random() * max);
-		if (random.indexOf(temp) == -1) {
-			random.push(temp);
-		} else i--;
+function randomlyPickCountries(data) {
+	const randomNumbers = [];
+	for (let i = 0; i < 10; i++) {
+		randomNumbers.push(i);
 	}
-	randomlyPickCountries(data, random);
-}
+	console.log(randomNumbers);
 
-function randomlyPickCountries(data, array) {
-	for (let i = 0; i < 12; i++) {
-		let path = data[array[i]].flags.png;
-		createNewCountryObject(data[array[i]], path);
+	const desiredNumbers = [];
+	for (let i = 0; i < 5; i++) {
+		let rand = Math.floor(Math.random() * randomNumbers.length);
+		randomNumbers.splice(rand, 1);
+		console.log(rand);
+		console.log(randomNumbers);
+		createCountryObject(data, rand);
+		rand = 0;
 	}
 }

@@ -47,8 +47,6 @@ body {
 	flex-flow: nowrap row;
 	align-items: baseline;
 	justify-content: space-between;
-
-	/* border: 1px solid black; */
 }
 
 .section-header h1 {
@@ -83,6 +81,26 @@ body {
 	justify-content: space-between;
 }
 
+.searching-filter-box__filter {
+	border: none;
+	padding: 10% 40% 10% 40%;
+	background-color: var(--light-mode-elements);
+
+	border-radius: 5px;
+	box-shadow: 0 0 10px var(--light-mode-input);
+}
+
+.by-region-filter-box__select {
+	border: none;
+	padding: 5% 20% 5% 20%;
+	background-color: var(--light-mode-elements);
+
+	border-radius: 5px;
+	box-shadow: 0 0 10px var(--light-mode-input);
+
+	margin-right: 150px;
+}
+
 .section--countries {
 	display: flex;
 	flex-flow: wrap row;
@@ -115,4 +133,10 @@ body {
 	display: flex;
 	font-weight: 300;
 	font-size: 16px;
+}
+
+@media (max-width: 720px) {
+	.by-region-filter-box__select {
+		margin-top: 60px;
+	}
 }

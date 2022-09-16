@@ -1,5 +1,9 @@
 const SECTION_COUNTRIES = document.querySelector(".section--countries");
 
+export function refreshCountries() {
+	SECTION_COUNTRIES.innerHTML = "";
+}
+
 export function createCountryObject(data, index) {
 	const countryBox = document.createElement("div");
 	const countryFlag = document.createElement("img");

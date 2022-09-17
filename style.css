@@ -101,6 +101,12 @@ body {
 	margin-right: 150px;
 }
 
+.region-select__random,
+.region-select__all {
+	font-weight: 600;
+	font-style: italic;
+}
+
 .section--countries {
 	display: flex;
 	flex-flow: wrap row;

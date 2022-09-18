@@ -5,7 +5,12 @@ export function refreshCountries() {
 }
 
 export function createCountryObject(data, index) {
+	const anchorElement = document.createElement("a");
+	anchorElement.href = `?name=${data[index].name.common}`;
+
 	const countryBox = document.createElement("div");
+	countryBox.appendChild(anchorElement);
+
 	const countryFlag = document.createElement("img");
 	const countryName = document.createElement("h2");
 	const countryPopulation = document.createElement("span");
@@ -20,10 +25,11 @@ export function createCountryObject(data, index) {
 
 	countryFlag.src = data[index].flags.png;
 	countryName.textContent = data[index].name.common;
-	countryPopulation.textContent = "Population: " + data[index].population;
+	countryPopulation.textContent =
+		"Population: " + data[index].population.toLocaleString();
 	countryRegion.textContent = "Region: " + data[index].region;
 	countryCapital.textContent = "Capital: " + data[index].capital;
-	countryBox.appendChild(countryFlag);
+	anchorElement.appendChild(countryFlag);
 	countryBox.appendChild(countryName);
 	countryBox.appendChild(countryPopulation);
 	countryBox.appendChild(countryRegion);

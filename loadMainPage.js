@@ -2,6 +2,9 @@ import { shuffle } from "./shuffle.js";
 import { createCountryObject } from "./countryDOM.js";
 import { refreshCountries } from "./countryDOM.js";
 
+const filters = document.querySelector(".section--filters");
+const detailPageSection = document.querySelector(".section--detail-page");
+
 const searchFilterText = document.querySelector(
 	".searching-filter-box__filter"
 );
@@ -13,6 +16,8 @@ export const loadMainContent = () => {
 		const response = await fetch("https://restcountries.com/v3.1/all");
 		return await response.json();
 	}
+
+	mainPageElements();
 
 	getCountriesApi()
 		.then((data) => {
@@ -84,3 +89,8 @@ export const loadMainContent = () => {
 		}
 	}
 };
+
+function mainPageElements() {
+	filters.style.display = "flex";
+	detailPageSection.style.display = "none";
+}

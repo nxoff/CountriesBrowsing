@@ -7,6 +7,7 @@
 	--light-mode-background: hsl(0, 0%, 98%);
 	--light-mode-elements: hsl(0, 0%, 100%);
 	--light-mode-moon: hsl(210, 3%, 43%);
+	--light-mode-go-back-button: rgb(167, 167, 167);
 }
 
 body {
@@ -116,6 +117,22 @@ body {
 	row-gap: 100px;
 
 	margin-top: 100px;
+}
+
+.section--detail-page {
+	display: none;
+}
+
+.detail-page__go-back-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 10px;
+
+	padding: 10px 25px 10px 25px;
+
+	background-color: none;
+	border: 1px solid var(--light-mode-go-back-button);
 }
 
 .country-box {

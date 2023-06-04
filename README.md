@@ -27,4 +27,4 @@
 
 - In progress
 
-https://d-eazy.github.io/CountriesBrowsing/
+https://nxoff.github.io/CountriesBrowsing/

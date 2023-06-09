@@ -6,15 +6,6 @@
 
 ---
 
-### Will be included
-
-- Searching filter
-- Filter by region
-- Random countries
-- Detal page
-
----
-
 ### Technologies I used:
 
 - HTML
@@ -22,9 +13,5 @@
 - Javascript
 
 ---
-
-### Status:
-
-- In progress
 
 https://nxoff.github.io/CountriesBrowsing/
